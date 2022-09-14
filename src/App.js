@@ -1,9 +1,9 @@
 import './App.css';
 import React, { Component } from 'react';
-import API from './API.js'
+import API from './API.js';
 import Dialog from './components/Dialog';
-import CharacterItem from './components/Dialog';
 import { render } from '@testing-library/react';
+import CharacterItem from './components/CharacterItem';
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class App extends Component {
     });
     }
 
+  
   render() {
     const { characters, showComponent } = this.state;
     return (
@@ -29,15 +30,12 @@ class App extends Component {
         { showComponent && <Dialog button={() => this.setState({ showComponent: !showComponent })}/> }
         <div class='wrapper'>
         { !showComponent && characters.map(character => (
-              <div className='card'>
-                <img className='image' src={character.image}></img>
-                <div className='information-card'>
-                  <h3 className ='name-character' key={character.id}>{character.name}</h3>
-                  <p className='status-character'>Status: {character.status}</p>
-                  <button className='btn-character' onClick={() => this.setState({ showComponent: !showComponent })}>See more</button>
-                </div>
-              </div>
-            ))}
+          <CharacterItem key={character.id}
+                         image={character.image} 
+                         name={character.name}
+                         status={character.status} 
+                         button={() => this.setState({ showComponent: !showComponent })} />
+         ))}
         </div>
       </div>
  )}

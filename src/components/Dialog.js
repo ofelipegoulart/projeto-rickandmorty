@@ -1,7 +1,7 @@
 import React from 'react';
 import './../App.css';
 
-function Dialog({ name, tool, button}) {
+function Dialog({ name, tool, button }) {
       return (
         <div>
             <div className='main-card'>
