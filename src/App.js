@@ -65,6 +65,12 @@ class App extends Component {
         </div>
         <ListCharacter data={this.state.data.results} />
         <Dialog data={this.state.data.results} />
+      <div className='footer'>
+        <div className='container-footer'>
+          <p className='counter-page'>You're at page {nextPage} of 42.</p>
+          <p className='author-page'>Developed by Felipe Goulart</p>
+        </div>
+      </div>
       </div>
     )
   }

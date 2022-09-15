@@ -118,6 +118,13 @@ body {
   margin:20px 10px;
   text-align:center;
 }
+
+.container-footer {
+  display:flex;
+  justify-content: space-between;
+  padding:20px;
+}
+
 }
 
 @media screen and (max-width:768px) {
