@@ -1,19 +1,19 @@
 import React from 'react';
 import './../App.css';
 
-function Dialog({ image, name, episodes, button }) {
+function Dialog({ data }) {
 
       return (
         <div>
             <div className='main-card'>
                 <div className='main-information-card'>
-                    <img className='main-image' src={image} alt={name}></img>
+                    <img className='main-image' src={data.image} alt={data.name}></img>
                         <div className='main-data'>
-                            <h3 className ='main-name-character'>{name}</h3>
-                            <p className='main-status-character'>Episodes: {episodes}</p> 
+                            <h3 className ='main-name-character'>{data.name}</h3>
+                            <p className='main-status-character'>Episodes: {data.episodes}</p> 
                         </div>
                 </div>
-                <button className='back-btn'>Go back</button>
+                <button className='back-btn'>Go Back</button>
             </div>
         </div>
       );

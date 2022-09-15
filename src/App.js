@@ -5,61 +5,68 @@ import Dialog from './components/Dialog';
 import ListCharacter from './components/ListCharacter';
 import { render } from '@testing-library/react';
 
-function CharacterItem (props) {
-  const { character } = props;
-};
+class App extends Component {
+  state = {
+    data: {
+      results: []
+    },
+    nextPage: 1
+  };
 
-  class App extends Component {
-    state = {
+  componentDidMount() {
+    this.prevFetchCharacters();
+    this.nextFetchCharacters();
+  }
+
+  nextFetchCharacters = async () => {
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character/?page=${this.state.nextPage}`
+    );
+
+    const data = await response.json();
+
+    this.setState({
       data: {
-        results: []
+        info: data.info,
+        results: data.results
       },
-      nextPage:1
-    };
-  
-    componentDidMount() {
-      this.prevFetchCharacters();
-      this.nextFetchCharacters();
-    }
-  
-    nextFetchCharacters = async () => {  
-        const response = await fetch(
-          `https://rickandmortyapi.com/api/character/?page=${this.state.nextPage}`
-        );
-        const data = await response.json();
-  
-        this.setState({
-          data: {
-            info: data.info,
-            results: data.results
-          },
-          nextPage: this.state.nextPage + 1,
-        });
-      };
+      nextPage: this.state.nextPage + 1,
+    });
+  };
 
-    prevFetchCharacters = async () => {  
-        const response = await fetch(
-          `https://rickandmortyapi.com/api/character/?page=${this.state.nextPage}`
-        );
+  prevFetchCharacters = async () => {
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character/?page=${this.state.nextPage}`
+    );
 
-        const data = await response.json();
-        console.log(this.state.nextPage)
-  
-        this.setState({
-          nextPage: this.state.nextPage - 1,
-        });
-    };
+    const data = await response.json();
+    console.log(this.state.nextPage)
+
     
-    render() {
-      const { nextPage, results } = this.state;
-      return (
+    this.setState({
+      data: {
+        info: data.info,
+        results: data.results
+      },
+      nextPage: this.state.nextPage - 1,
+    });
+  };
+
+  render() {
+    const { nextPage, results } = this.state;
+    return (
       <div>
+        <div className='header'>
         <h1 className='title'>Rick and Morty's Characters</h1>
-        {<button onClick={() => this.prevFetchCharacters()}>Previous</button>}
-        {<button onClick={() => this.nextFetchCharacters()}>Next</button>}
+        <div className='pannel-pagination'>
+          {<button className='btn-pagination' onClick={() => this.prevFetchCharacters()}>&lt;&lt; Prev</button>}
+          {<button className='btn-pagination' onClick={() => this.nextFetchCharacters()}>Next &gt;&gt;</button>}
+        </div>
+        </div>
         <ListCharacter data={this.state.data.results} />
+        <Dialog data={this.state.data.results} />
       </div>
-        )
+    )
   }
 };
 export default App;

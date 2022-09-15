@@ -48,7 +48,7 @@ function ListCharacter({ data }) {
               <div className='information-card'>
                 <h3 className ='name-character'>{data.name}</h3>
                 <p className='status-character'>Status: {data.status}</p>
-                <button className='btn-character'>See more</button>
+                <button className='btn-character'>See More</button>
               </div>
             </div>
         ))}
