@@ -7,7 +7,6 @@ function ListCharacter({ data }) {
   const [displayContent, setDisplayContent] = useState(false);
   const [infos, setInfos] = useState('');
 
-
   const componentDidMount = () => {
     this.prevFetchCharacters();
     this.nextFetchCharacters();

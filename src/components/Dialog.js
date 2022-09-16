@@ -3,6 +3,8 @@ import './../App.css';
 
 function Dialog(props) {
     const data = props.data;
+    
+    // Criar iteração dos episodios aqui;
 
       return (
         <div>
@@ -16,7 +18,6 @@ function Dialog(props) {
                 </div>
                 <button className='back-btn' onClick={props.closeDialog}>Go Back</button>
             </div>
-        {console.log(data.display)}
         </div>
       );
   }

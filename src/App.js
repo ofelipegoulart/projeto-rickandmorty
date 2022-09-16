@@ -14,6 +14,7 @@ class App extends Component {
     infoCharacter: '',
   };
 
+  // Mecanismo de Paginação
   componentDidMount() {
     this.prevFetchCharacters();
     this.nextFetchCharacters();
@@ -51,7 +52,6 @@ class App extends Component {
       nextPage: this.state.nextPage - 1,
     });
   };
-
 
   render() {
     const { nextPage, results } = this.state;
