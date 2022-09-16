@@ -1,27 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './../App.css';
 
-function Dialog({ data }) {
+function Dialog(props) {
+    const data = props.data;
 
       return (
         <div>
             <div className='main-card'>
                 <div className='main-information-card'>
-                    <img className='main-image' src={data.image} alt={data.name}></img>
+                    <img className='main-image' src={data.image}></img>
                         <div className='main-data'>
                             <h3 className ='main-name-character'>{data.name}</h3>
-                            <p className='main-status-character'>Episodes: {data.episodes}</p> 
+                            <p className='main-status-character'>Episodes:</p> 
                         </div>
                 </div>
-                <button className='back-btn'>Go Back</button>
+                <button className='back-btn' onClick={props.closeDialog}>Go Back</button>
             </div>
+        {console.log(data.display)}
         </div>
       );
   }
-  
-Dialog.defaultProps = {
-    name: "Designer",
-    tool: "Adobe XD"
-}
 
 export default Dialog;

@@ -1,6 +1,5 @@
 import './App.css';
 import React, { Component, useState } from 'react';
-import API from './API.js';
 import Dialog from './components/Dialog';
 import ListCharacter from './components/ListCharacter';
 import { render } from '@testing-library/react';
@@ -10,7 +9,9 @@ class App extends Component {
     data: {
       results: []
     },
-    nextPage: 1
+    characterInfo: '',
+    nextPage: 1,
+    infoCharacter: '',
   };
 
   componentDidMount() {
@@ -40,7 +41,6 @@ class App extends Component {
     );
 
     const data = await response.json();
-    console.log(this.state.nextPage)
 
     
     this.setState({
@@ -51,6 +51,7 @@ class App extends Component {
       nextPage: this.state.nextPage - 1,
     });
   };
+
 
   render() {
     const { nextPage, results } = this.state;
@@ -64,7 +65,7 @@ class App extends Component {
         </div>
         </div>
         <ListCharacter data={this.state.data.results} />
-        <Dialog data={this.state.data.results} />
+        
       <div className='footer'>
         <div className='container-footer'>
           <p className='counter-page'>You're at page {nextPage} of 42.</p>
