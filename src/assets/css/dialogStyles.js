@@ -11,7 +11,7 @@ const MainCard = styled.div`
     @media (max-width: 768px) {
         width:95%;
         font-size:12px;
-        height:32rem;
+        height:70%;
         overflow:scroll;
     }
 
@@ -80,7 +80,7 @@ const NameCharacter = styled.h3`
 const BackButton = styled.button`
     border:none;
     float:right;
-    margin: auto 20px;
+    margin: 10px 20px;
     border-radius:10px;
     background-color:#D8BCB5;
     text-align:center;

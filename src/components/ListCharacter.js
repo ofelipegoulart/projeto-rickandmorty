@@ -1,4 +1,4 @@
-import '../App.css';
+import '../assets/css/App.css';
 import React, { useState } from 'react';
 import Dialog from './Dialog';
 import listCharacterStyles from '../assets/css/listCharacterStyles';
@@ -37,6 +37,5 @@ function ListCharacter({ data }) {
     
   )
   };
-
 
 export default ListCharacter;

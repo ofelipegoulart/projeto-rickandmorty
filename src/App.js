@@ -1,4 +1,4 @@
-import './App.css';
+import './assets/css/App.css';
 import React, { Component } from 'react';
 import ListCharacter from './components/ListCharacter';
 import Footer from './components/Footer';
