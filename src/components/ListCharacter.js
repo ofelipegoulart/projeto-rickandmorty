@@ -15,7 +15,8 @@ function ListCharacter({ data }) {
   const handleClick = async (data) => {
     setInfos({
       name: data.name,
-      image: data.image
+      image: data.image,
+      episode: data.episode
     });
     setDisplayContent(true);
   }

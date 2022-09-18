@@ -7,7 +7,7 @@ import { render } from '@testing-library/react';
 class App extends Component {
   state = {
     data: {
-      results: []
+      results: [],
     },
     characterInfo: '',
     nextPage: 1,
@@ -65,7 +65,6 @@ class App extends Component {
         </div>
         </div>
         <ListCharacter data={this.state.data.results} />
-        
       <div className='footer'>
         <div className='container-footer'>
           <p className='counter-page'>You're at page {nextPage} of 42.</p>
