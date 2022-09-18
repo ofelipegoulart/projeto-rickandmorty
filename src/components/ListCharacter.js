@@ -1,16 +1,13 @@
 import '../App.css';
-import React, { Component, useEffect, useState, setState } from 'react';
+import React, { useState } from 'react';
 import Dialog from './Dialog';
-import { isVisible } from '@testing-library/user-event/dist/utils';
+import listCharacterStyles from '../assets/css/listCharacterStyles';
+
 
 function ListCharacter({ data }) {
+  const { Container, Image, Card, InformationCard, NameCharacter, ButtonCharacter } = listCharacterStyles;
   const [displayContent, setDisplayContent] = useState(false);
   const [infos, setInfos] = useState('');
-
-  const componentDidMount = () => {
-    this.prevFetchCharacters();
-    this.nextFetchCharacters();
-  }
 
   const handleClick = async (data) => {
     setInfos({
@@ -23,19 +20,19 @@ function ListCharacter({ data }) {
 
   return (
     <div>
-      <div className='wrapper'>
+      <Container>
       { !displayContent && data.map(data => (
-                    <div className='card' key={data.id}>
-                    <img className='image' src={data.image}></img>
-                    <div className='information-card'>
-                      <h3 className ='name-character'>{data.name}</h3>
-                      <p className='status-character'>Status: {data.status}</p>
-                      <button className='btn-character' onClick={() => handleClick(data)}>See More</button>
-                    </div>
-                  </div>
+                    <Card key={data.id}>
+                    <Image src={data.image} alt={data.name}></Image>
+                    <InformationCard>
+                      <NameCharacter>{data.name}</NameCharacter>
+                      <p>Status: {data.status}</p>
+                      <ButtonCharacter onClick={() => handleClick(data)}>See More</ButtonCharacter>
+                    </InformationCard>
+                  </Card>
               ))}
-        </div>
-      {displayContent && <Dialog data={infos} closeDialog={() => setDisplayContent(false)} />}
+        </Container>
+        {displayContent && <Dialog data={infos} closeDialog={() => setDisplayContent(false)} />}
     </div>
     
   )

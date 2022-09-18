@@ -1,10 +1,11 @@
 import './App.css';
-import React, { Component, useState } from 'react';
-import Dialog from './components/Dialog';
+import React, { Component } from 'react';
 import ListCharacter from './components/ListCharacter';
-import { render } from '@testing-library/react';
+import Footer from './components/Footer';
+import mainStyles from './assets/css/mainStyles';
 
 class App extends Component {
+
   state = {
     data: {
       results: [],
@@ -42,7 +43,6 @@ class App extends Component {
     );
 
     const data = await response.json();
-
     
     this.setState({
       data: {
@@ -54,25 +54,22 @@ class App extends Component {
   };
 
   render() {
-    const { nextPage, results } = this.state;
+    const { nextPage } = this.state;
+    const { HeaderDiv, Title, PannelPagination, BtnPagination } = mainStyles;
     return (
       <div>
-        <div className='header'>
-        <h1 className='title'>Rick and Morty's Characters</h1>
-        <div className='pannel-pagination'>
-          {<button className='btn-pagination' onClick={() => this.prevFetchCharacters()}>&lt;&lt; Prev</button>}
-          {<button className='btn-pagination' onClick={() => this.nextFetchCharacters()}>Next &gt;&gt;</button>}
-        </div>
-        </div>
+        <HeaderDiv>
+        <Title >Rick and Morty's Characters</Title>
+        <PannelPagination>
+            {<BtnPagination onClick={() => this.prevFetchCharacters()}>&lt;&lt; Prev</BtnPagination>}
+            {<BtnPagination onClick={() => this.nextFetchCharacters()}>&gt;&gt; Next</BtnPagination>}
+        </PannelPagination>
+        </HeaderDiv>
         <ListCharacter data={this.state.data.results} />
-      <div className='footer'>
-        <div className='container-footer'>
-          <p className='counter-page'>You're at page {nextPage} of 42.</p>
-          <p className='author-page'>Developed by Felipe Goulart</p>
-        </div>
-      </div>
+        <Footer data={nextPage} />
       </div>
     )
   }
 };
+
 export default App;

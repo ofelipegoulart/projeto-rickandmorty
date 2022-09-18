@@ -1,10 +1,11 @@
-import { render } from '@testing-library/react';
 import React, { useState } from 'react';
 import './../App.css';
+import dialogStyles from '../assets/css/dialogStyles';
 
 function Dialog(props) {
     const data = props.data;
     const [episode,setEpisode] = useState([ ]);
+    const { MainCard, InformationCard, Image, ContainerCard, NameCharacter, BackButton } = dialogStyles;
     
     const getEpisodes = async () => {
         let i=0;
@@ -19,19 +20,18 @@ function Dialog(props) {
        }
 
       return (
-        <div>
-            <div className='main-card'>
-                <div className='main-information-card'>
-                    <img className='main-image' src={data.image}></img>
-                        <div className='main-data'>
-                            <h3 className ='main-name-character'>{data.name}</h3>
-                            <p className='main-status-character'>Episodes: {episode}</p> 
-                        {getEpisodes().urllist}
-                        </div>
-                </div>
-                <button className='back-btn' onClick={props.closeDialog}>Go Back</button>
-            </div>
-        </div>
+            <MainCard>
+                <InformationCard>
+                    <Image src={data.image} alt={data.name}></Image>
+                        <ContainerCard>
+                            <NameCharacter>{data.name}</NameCharacter>
+                            <p>Episodes: {episode}</p> 
+                        {getEpisodes().urllist}                    
+                        </ContainerCard>
+                        
+                </InformationCard>
+                <BackButton onClick={props.closeDialog}>Go Back</BackButton>
+            </MainCard>
       );
   }
 

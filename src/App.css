@@ -104,7 +104,7 @@ body {
 
 .main-information-card {
   display:flex;
-  width:70%;
+  width:90%;
   height:80%;
 }
 
@@ -114,6 +114,11 @@ body {
   color:#F9B798;
   font-size:28px;
   font-weight: 400;
+}
+
+.main-status-character {
+  margin:0;
+
 }
 
 
