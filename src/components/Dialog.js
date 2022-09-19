@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './../App.css';
+import '../assets/css/App.css';
 import dialogStyles from '../assets/css/dialogStyles';
 
 function Dialog(props) {
